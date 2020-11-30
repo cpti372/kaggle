@@ -1,0 +1,51 @@
+train = pd.read_csv('/kaggle/input/walmart-recruiting-store-sales-forecasting/train.csv.zip')
+train
+
+test = pd.read_csv('/kaggle/input/walmart-recruiting-store-sales-forecasting/test.csv.zip')
+test
+
+#날짜 데이터 형식은 문자형태이므로 처리할 때 이런 방식으로 바꿔준다
+train['Date']=train['Date'].astype('datetime64') 
+#train['Date']=pd.to_datetime(train['Date']) 
+#parse_dates=['Date']
+
+#성능을 올리기 위해, 일/년/월/주 모든 데이터 칼럼을 추가해준다. 
+train['Year']=train['Date'].dt.year
+train['Month']=train['Date'].dt.month
+train['Day']=train['Date'].dt.day
+train['Week']=train['Date'].dt.week
+train
+
+train['Year'].unique()
+test['Date']=test['Date'].astype('datetime64')
+test
+test['Year']=test['Date'].dt.year
+test['Month']=test['Date'].dt.month
+test['Day']=test['Date'].dt.day
+test['Week']=test['Date'].dt.isocalendar().week
+
+train2 = train.drop(columns=['Date', 'Weekly_Sales'])
+train2
+test2 = test.drop(columns=['Date'])
+test2
+
+#머신러닝에서는 데이터 시각화 역시 중요하다. 주와요일이 주별 매출에 끼치는 영향을 알아볼 수 있다. 
+import seaborn as sns 
+import matplotlib.pyplot as plt
+plt.figure(figsize=(16,10))
+sns.boxplot(train['Week'],train['Weekly_Sales'],showfliers=False)
+train.groupby('Day')['Weekly_Sales'].mean() #요일별로 결과값 춫력 
+
+#랜덤 포레스트 모델을 이용해 진행
+%%time
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(n_jobs=4)
+rf.fit(train2, train['Weekly_Sales']) 
+result = rf.predict(test2)
+
+sub = pd.read_csv('/kaggle/input/walmart-recruiting-store-sales-forecasting/sampleSubmission.csv.zip')
+sub['Weekly_Sales'] = result
+sub
+sub.to_csv('sub_wal3.csv', index=0)
+
+result
