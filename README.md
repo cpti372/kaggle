@@ -1,20 +1,31 @@
 # kaggle
 <h2>1. 딥러닝 문제 풀이</h2>
 <ul>
-  <li>Plant Seed Problem</li>
-  <li>State Farm Problem </li>
-  <li>Invasive species Problem</li>
-  <li>Cat and Dog Problem</li>
+  <li>[다중이미지분류]Plant Seedlings Classification</li>
+  Determine the species of a seedling from an image
+  <li>[다중이미지분류]State Farm Distracted Driver Detection</li>
+  Can computer vision spot distracted drivers? Given a dataset of 2D dashboard camera images, State Farm is challenging Kagglers to classify each   driver's behavior. Are they driving attentively, wearing their seatbelt, or taking a selfie with their friends in the backseat?
+  <li>[이진이미지분류]Invasive species Problem</li>
+  Identify images of invasive hydrangea
+  <li>[이진이미지분류]Dogs vs. Cats Redux: Kernels Edition</li>
+  Distinguish images of dogs from cats
 </ul>
 
 <h2>2. 머신러닝 문제 풀이</h2>
 <ul>
-  <li>Bike Sharing Demand</li>
-  <li>Walmart Recruting </li>
-    연도/휴일 등의 지표를 이용하여 월마트 매장의 매출을 예측하는 문제
+  <li>[회귀]Bike Sharing Demand</li>
+  Forecast use of a city bikeshare system
+  <li>[회귀]Walmart Recruiting - Store Sales Forecasting </li>
+   Use historical markdown data to predict store sales
+  <li>[분류]Don't Get Kicked! </li>
+    The challenge of this competition is to predict if the car purchased at the Auction is a Kick (bad buy)
+  <li>[분류]Give me Some credit</li>
+    Improve on the state of the art in credit scoring by predicting the probability that somebody will experience financial distress in the next       two years.
+  
 </ul>
 
 <h2>3. 자연어처리 문제 풀이</h2>
 <ul>
   <li>Movie Review</li>
+  Use Google's Word2Vec for movie reviews
 </ul>
