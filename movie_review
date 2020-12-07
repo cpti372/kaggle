@@ -1,0 +1,19 @@
+train=pd.read_table('/kaggle/input/word2vec-nlp-tutorial/labeledTrainData.tsv.zip')
+train['review'][0]
+#단어를 파싱한다. 토큰화, 딥러닝 코드를 최대한 유지하는 방향으로 가야한다. 
+#문자 하나하나에 숫자를 부여하고 딕셔너리화한다. 
+#라이브러리를 가져온다. 
+from keras.preprocessing.text import Tokenizer
+Tk=Tokenizer()
+Tk.fit_on_texts(train['review'])
+Tk.word_index
+text=Tk.texts_to_sequences(train['review'])
+text[0]
+from keras.preprocessing.sequence import pad_sequences #의미없는 0이나 이런 숫자를 넣어줘서 패딩해준다 
+pad=pad_sequences(text,maxlen=500)
+pad.shape #2493개로 단어의 갯수가 바뀜,가장 큰 거에 맞춰서
+
+#단어의 개수를 카운트해서 딥러닝 -> 토크나이저 진행해서 정보 하나하나 예측 돌리기 
+model.fit(text)
+model.compile
+model.predict()
