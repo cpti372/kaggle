@@ -1,0 +1,34 @@
+pd.options.display.max_columns=999
+index=pd.read_excel('../input/GiveMeSomeCredit/Data Dictionary.xls')
+index
+train=pd.read_csv('../input/GiveMeSomeCredit/cs-training.csv')
+train
+test=pd.read_csv('../input/GiveMeSomeCredit/cs-test.csv')
+test
+train['MonthlyIncome'].fillna(train['MonthlyIncome'].mean(),inplace=True)
+train['NumberOfDependents'].fillna(train['NumberOfDependents'].mode()[0], inplace=True)
+test['MonthlyIncome'].fillna(test['MonthlyIncome'].mean(),inplace=True)
+test['NumberOfDependents'].fillna(test['NumberOfDependents'].mode()[0], inplace=True)
+print(train.isnull().sum())
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+#plot two type classe "0" and "1"
+sns.countplot(x='SeriousDlqin2yrs',data=train)
+plt.show()
+cor=train.corr()
+fig, ax = plt.subplots(figsize=(12,12))
+sns.heatmap(cor,xticklabels=cor.columns,yticklabels=cor.columns,annot=True,ax=ax)
+train_2=train.drop(columns=['SeriousDlqin2yrs','Id'])
+train_2
+test_2=test.drop(columns=['SeriousDlqin2yrs','Id'])
+test_2
+from sklearn.ensemble import RandomForestRegressor
+rf = RandomForestRegressor(random_state=4)
+ rf.fit(train_2, train['SeriousDlqin2yrs']) 
+result = rf.predict_proba(test_2) #얼마나 잘 갚을 수 있을지에 관해서 ~%만큼 잘 갚을 수 있다. 이런식으로 
+result
+sub=pd.read_csv('../input/GiveMeSomeCredit/sampleEntry.csv')
+sub
+sub['Probability']=result
+sub.to_csv('credit2.csv',index=0)
