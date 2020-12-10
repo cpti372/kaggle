@@ -17,6 +17,8 @@
   Forecast use of a city bikeshare system
   <li>[회귀]Walmart Recruiting - Store Sales Forecasting </li>
    Use historical markdown data to predict store sales
+  <li>[회귀]Housing Prices Competition for Kaggle Learn Users</li>
+  To predict the sales price for each house. For each Id in the test set, must predict the value of the SalePrice variable. 
   <li>[분류]Don't Get Kicked! </li>
     The challenge of this competition is to predict if the car purchased at the Auction is a Kick (bad buy)
   <li>[분류]Give me Some credit</li>
