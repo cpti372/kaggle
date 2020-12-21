@@ -23,7 +23,7 @@
     The challenge of this competition is to predict if the car purchased at the Auction is a Kick (bad buy)
   <li>[분류]Give me Some credit</li>
     Improve on the state of the art in credit scoring by predicting the probability that somebody will experience financial distress in the next       two years.
-  <li>Mercedes-Benz Greener Manufacturing</li>
+  <li>[회귀/트리모델]Mercedes-Benz Greener Manufacturing</li>
     Can you cut the time a Mercedes-Benz spends on the test bench?
 </ul>
 
